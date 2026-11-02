@@ -1,22 +1,22 @@
 // ==============================================================================
 // CẤU HÌNH FIREBASE REALTIME DATABASE - BẢNG XẾP HẠNG BẢO TÀNG ĐẠI HỘI VII
 // ==============================================================================
-// Hướng dẫn: Dán thông tin firebaseConfig lấy từ Firebase Console vào đây.
 
 const FIREBASE_CONFIG = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-  databaseURL: "https://YOUR_PROJECT_ID-default-rtdb.asia-southeast1.firebasedatabase.app",
-  projectId: "YOUR_PROJECT_ID",
-  storageBucket: "YOUR_PROJECT_ID.appspot.com",
-  messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-  appId: "YOUR_APP_ID"
+  apiKey: "AIzaSyDXOsB-Vjuh_i8ZdhMigE42EhlxC-QCwN8",
+  authDomain: "trie-1ae27.firebaseapp.com",
+  databaseURL: "https://trie-1ae27-default-rtdb.firebaseio.com",
+  projectId: "trie-1ae27",
+  storageBucket: "trie-1ae27.firebasestorage.app",
+  messagingSenderId: "852497463406",
+  appId: "1:852497463406:web:f2f56a0cd948f2ab8f4e7f",
+  measurementId: "G-CHJ7ZV07NH"
 };
 
 // Kiểm tra xem cấu hình đã được điền chưa
 function isFirebaseConfigured() {
   return FIREBASE_CONFIG && 
-         FIREBASE_CONFIG.apiKey !== "YOUR_API_KEY" && 
+         FIREBASE_CONFIG.apiKey && 
          FIREBASE_CONFIG.databaseURL && 
          !FIREBASE_CONFIG.databaseURL.includes("YOUR_PROJECT_ID");
 }
