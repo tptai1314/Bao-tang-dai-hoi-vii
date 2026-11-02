@@ -1,0 +1,257 @@
+{
+  "museum": {
+    "title": "Bảo tàng ảo Đại hội VII của Đảng (1991)",
+    "subtitle": "Đổi mới, Ổn định và Phát triển",
+    "historicalDate": "24 - 27/6/1991",
+    "location": "Hội trường Ba Đình, Hà Nội",
+    "totalRooms": 5,
+    "themeColors": {
+      "primary": "#7f1d1d",
+      "accent": "#f59e0b",
+      "gold": "#fbbf24",
+      "background": "#0a0c10"
+    }
+  },
+  "rooms": [
+    {
+      "id": "room1",
+      "order": 1,
+      "title": "PHÒNG 1: BỐI CẢNH LỊCH SỬ (1986 - 1990)",
+      "subtitle": "Khó khăn sau 5 năm Đổi mới & Biến động dữ dội ở Liên Xô, Đông Âu",
+      "themeMessage": "Vì sao cần Đại hội VII?",
+      "lightColor": "#cfd8dc",
+      "lightName": "Xám lạnh",
+      "centerpiece": {
+        "name": "Tủ kính So sánh: Đại hội VI (1986) & Bối cảnh khó khăn (1990)",
+        "description": "Để lại của Đại hội VI khởi xướng Đổi mới, nhưng 5 năm sau vẫn phải đương đầu với lạm phát phi mã 774,7% năm 1986.",
+        "interactiveFeature": "Thanh trượt so sánh Trước 1986 / Sau Đại hội VII",
+        "imagePath": "assets/images/p1_centerpiece_dh6_1986.jpg"
+      },
+      "audioNarration": {
+        "duration": "35s",
+        "script": "Chào mừng quý khách đến với Phòng 1. Sau 5 năm khởi xướng Đổi mới từ Đại hội 6 năm 1986, đất nước ta vẫn đứng trước muôn vàn thử thách hiểm nghèo: lạm phát phi mã 3 con số lên tới 774,7%, đời sống nhân dân vô cùng khó khăn. Cùng lúc đó, hệ thống xã hội chủ nghĩa ở Đông Âu sụp đổ, Liên Xô khủng hoảng trầm trọng, khối SEV giải thể. Bối cảnh sống còn ấy đòi hỏi Đảng phải triệu tập Đại hội VII để kiên định mục tiêu độc lập dân tộc gắn liền với chủ nghĩa xã hội và vạch ra chiến lược ổn định, phát triển đất nước."
+      },
+      "hotspots": [
+        {
+          "id": "p1_hotspot_a",
+          "label": "BẢNG SỐ LIỆU LẠM PHÁT (1986 - 1990)",
+          "title": "Diễn biến Lạm phát phi mã và Cải cách Giá - Lương - Tiền (1986 - 1990)",
+          "keyData": "Lạm phát 1986: 774,7%; 1987: 223,1%; 1988: 393,8%; 1989: 34,7%; 1990: 67,4%.",
+          "citation": "Niên giám Thống kê 1986 - 1995; Giáo trình Lịch sử Đảng, tr. 282.",
+          "imageUrl": "assets/images/p1_a_lam_phat.webp"
+        },
+        {
+          "id": "p1_hotspot_b",
+          "label": "BỨC TƯỜNG BERLIN SỤP ĐỔ (1989)",
+          "title": "Biến động Liên Xô, Đông Âu: Bức tường Berlin sụp đổ & Liên Xô khủng hoảng",
+          "keyData": "Tháng 11/1989 Bức tường Berlin sụp đổ; tháng 12/1991 Liên Xô tan rã; Việt Nam mất 80% thị trường xuất nhập khẩu.",
+          "citation": "Văn kiện Đại hội VII, tr. 15-20.",
+          "imageUrl": "assets/images/p1_b_tuong_berlin.webp"
+        }
+      ]
+    },
+    {
+      "id": "room2",
+      "order": 2,
+      "title": "ĐẠI HỘI VII, 24 - 27/6/1991",
+      "subtitle": "Đổi mới, Ổn định và Phát triển - Hội trường Ba Đình, Hà Nội",
+      "themeMessage": "Đại hội VII đã quyết định điều gì?",
+      "lightColor": "#fde047",
+      "lightName": "Vàng ấm trang trọng",
+      "centerpiece": {
+        "name": "Toàn cảnh Đại hội VII 24-27/6/1991",
+        "description": "Hội trường Ba Đình chứa 1.176 đại biểu, nơi ra đời Cương lĩnh 1991.",
+        "interactiveFeature": "Lật mở 4 mục cốt lõi của Cương lĩnh 1991",
+        "imagePath": "assets/images/p2_centerpiece_dh7_1991.webp"
+      },
+      "audioNarration": {
+        "duration": "45s",
+        "script": "Quý khách đang đứng tại Phòng 2. Đại hội lần thứ VII của Đảng họp từ ngày 24 đến 27 tháng 6 năm 1991 tại Hội trường Ba Đình, Hà Nội với 1.176 đại biểu tham dự. Đại hội đã bầu đồng chí Đỗ Mười làm Tổng Bí thư và thông qua bản Cương lĩnh xây dựng đất nước trong thời kỳ quá độ lên chủ nghĩa xã hội. Đây là mốc son đặc biệt khi lần đầu tiên Đảng ta chính thức khẳng định: Đảng lấy chủ nghĩa Mác - Lênin và tư tưởng Hồ Chí Minh làm nền tảng tư tưởng, kim chỉ nam cho hành động."
+      },
+      "hotspots": [
+        {
+          "id": "p2_hotspot_a",
+          "label": "TỔNG BÍ THƯ ĐỖ MƯỜI",
+          "title": "Tổng Bí thư Đỗ Mười được bầu tại Đại hội VII (1991 - 1996)",
+          "keyData": "1.176 đại biểu; 146 ủy viên BCH Trung ương; Bộ Chính trị 13 ủy viên; Tổng Bí thư: Đỗ Mười; Cố vấn: Nguyễn Văn Linh, Phạm Văn Đồng, Võ Chí Công.",
+          "citation": "Văn kiện Đảng Toàn tập, Tập 51, tr. 145-148.",
+          "imageUrl": "assets/images/p2_a_tong_bi_thu.jpg"
+        },
+        {
+          "id": "p2_hotspot_b",
+          "label": "CƯƠNG LĨNH 1991",
+          "title": "Sáu Đặc trưng Bản chất của Xã hội XHCN theo Cương lĩnh 1991",
+          "keyData": "Dân chủ làm chủ; Lực lượng sản xuất hiện đại; Văn hóa tiên tiến; Con người giải phóng; Dân tộc bình đẳng; Hợp tác quốc tế.",
+          "citation": "Cương lĩnh 1991, NXB Sự thật, tr. 8-10.",
+          "imageUrl": "assets/images/p2_b_co_dang.webp"
+        }
+      ]
+    },
+    {
+      "id": "room3",
+      "order": 3,
+      "title": "CHIẾN LƯỢC KINH TẾ ĐẾN NĂM 2000 & ĐỐI NGOẠI",
+      "subtitle": "\"Việt Nam muốn là bạn với tất cả các nước trong cộng đồng thế giới\"",
+      "themeMessage": "Đại hội VII chọn hướng đi nào cho kinh tế và quan hệ quốc tế?",
+      "lightColor": "#38bdf8",
+      "lightName": "Trắng xanh hiện đại",
+      "centerpiece": {
+        "name": "Quả địa cầu đối ngoại 3D xoay phát sáng với vành quỹ đạo vàng",
+        "description": "Biểu trưng cho chính sách đối ngoại rộng mở, đa phương hóa, đa dạng hóa.",
+        "interactiveFeature": "Mốc son ngoại giao phá thế bao vây cô lập"
+      },
+      "audioNarration": {
+        "duration": "45s",
+        "script": "Tại Phòng 3, quý khách được tìm hiểu hai quyết sách mang tầm thời đại của Đại hội VII: Chiến lược kinh tế - xã hội đến năm 2000 xác lập nền kinh tế hàng hóa nhiều thành phần vận hành theo cơ chế thị trường có sự quản lý của Nhà nước; và bước ngoặt đối ngoại với tuyên ngôn: 'Việt Nam muốn là bạn với tất cả các nước trong cộng đồng thế giới'. Quyết sách này đã giúp đất nước phá vỡ hoàn toàn thế bao vây cấm vận, mở ra kỷ nguyên hội nhập kinh tế quốc tế sâu rộng."
+      },
+      "hotspots": [
+        {
+          "id": "p3_hotspot_a",
+          "label": "CHIẾN LƯỢC KINH TẾ ĐẾN NĂM 2000",
+          "title": "Nền kinh tế hàng hóa nhiều thành phần & Mục tiêu tăng gấp đôi GDP",
+          "keyData": "Mục tiêu năm 2000: Tăng gấp đôi GDP so với 1990; thừa nhận kinh tế tư nhân và vốn FDI lâu dài.",
+          "citation": "Văn kiện Đại hội VII, tr. 56-65.",
+          "imageUrl": "assets/images/p3_a_co_to_quoc.webp"
+        },
+        {
+          "id": "p3_hotspot_b",
+          "label": "MỐC NGOẠI GIAO THÁNG 7/1995",
+          "title": "Tháng 7/1995: Mốc son Chói lọi của Ngoại giao Việt Nam - Gia nhập ASEAN",
+          "keyData": "11/7/1995 ký Hiệp định khung EU; 12/7/1995 bình thường hóa với Hoa Kỳ; 28/7/1995 gia nhập ASEAN.",
+          "citation": "Giáo trình Lịch sử Đảng, tr. 298.",
+          "imageUrl": "assets/images/p3_b_asean_1995.webp"
+        }
+      ]
+    },
+    {
+      "id": "room4",
+      "order": 4,
+      "title": "KẾT QUẢ VÀ Ý NGHĨA LỊCH SỬ CỦA ĐẠI HỘI VII",
+      "subtitle": "Bước đầu ra khỏi khủng hoảng - Tiền đề đẩy mạnh Công nghiệp hóa, Hiện đại hóa",
+      "themeMessage": "Đại hội VII để lại gì cho đất nước?",
+      "lightColor": "#fffbeb",
+      "lightName": "Trắng ấm khải hoàn",
+      "centerpiece": {
+        "name": "Dòng thời gian 3D nối 3 kỳ Đại hội (VI 1986 -> VII 1991 -> VIII 1996)",
+        "description": "3 trụ mốc lịch sử kết nối bằng thanh năng lượng phát sáng.",
+        "interactiveFeature": "Bấm vào từng mốc thời gian để xem vai trò mắt xích lịch sử"
+      },
+      "audioNarration": {
+        "duration": "40s",
+        "script": "Phòng 4 tổng kết những thành tựu vượt bậc của nhiệm kỳ Đại hội VII. Giai đoạn 1991 - 1995 ghi nhận tốc độ tăng trưởng GDP bình quân 8,2% mỗi năm, lạm phát được kiềm chế vững chắc, đại công trình Đường dây 500kV Bắc - Nam hoàn thành nối liền mạch máu năng lượng đất nước. Đại hội VII chính là cây cầu lịch sử nối tiếp công cuộc Đổi mới, chuẩn bị trọn vẹn thế và lực để Đảng ta tự tin bước vào thời kỳ đẩy mạnh công nghiệp hóa, hiện đại hóa."
+      },
+      "hotspots": [
+        {
+          "id": "p4_hotspot_a",
+          "label": "TỔNG KẾT THÀNH TỰU (1991 - 1995)",
+          "title": "Đánh giá Khách quan Thành tựu kinh tế - Xã hội",
+          "keyData": "GDP tăng 8,2%/năm (vượt chỉ tiêu 5,5-6,5%); lạm phát về 12,7% (1995); đóng điện 500kV (1994).",
+          "citation": "Báo cáo BCH Trung ương tại Đại hội VIII (1996); Giáo trình Lịch sử Đảng, tr. 305-310.",
+          "imageUrl": "assets/images/p4_a_tem_phieu.jpg"
+        },
+        {
+          "id": "p4_hotspot_b",
+          "label": "TIỀN ĐỀ BƯỚC VÀO THỜI KỲ CNH, HĐH",
+          "title": "Tiền đề Lịch sử Đưa Đất nước Sang Thời kỳ Đẩy mạnh CNH, HĐH",
+          "keyData": "Kết luận lịch sử: Nước ta đã bước đầu ra khỏi khủng hoảng kinh tế - xã hội, chuyển sang giai đoạn CNH - HĐH.",
+          "citation": "Văn kiện Đại hội VIII, tr. 68.",
+          "imageUrl": "assets/images/p4_b_mau_dich.webp"
+        }
+      ]
+    },
+    {
+      "id": "quiz",
+      "order": 5,
+      "title": "PHÒNG QUIZ: THỬ THÁCH TRẮC NGHIỆM LỊCH SỬ",
+      "subtitle": "Củng cố tri thức & Nhận Giấy chứng nhận vinh danh",
+      "themeMessage": "Khẳng định kiến thức – Vinh danh Chiến sĩ Lịch sử",
+      "lightColor": "#fbbf24",
+      "lightName": "Vàng rực rỡ vinh danh",
+      "centerpiece": {
+        "name": "Bục đài biểu tượng Sao Vàng 3D phát sáng",
+        "description": "Trung tâm điều khiển bài thi trắc nghiệm 6 câu hỏi.",
+        "interactiveFeature": "Thi trắc nghiệm có chấm điểm, huy hiệu Vàng/Bạc/Đồng và xuất Bằng chứng nhận PNG"
+      }
+    }
+  ],
+  "quizQuestions": [
+    {
+      "id": 1,
+      "roomOrigin": "room1",
+      "question": "Trước thềm Đại hội VII (1991), tỷ lệ lạm phát phi mã đỉnh điểm của Việt Nam năm 1986 là bao nhiêu?",
+      "options": [
+        "77,4%",
+        "774,7%",
+        "393,8%",
+        "120,5%"
+      ],
+      "correct": 1,
+      "explanation": "Theo Niên giám Thống kê và Giáo trình Lịch sử Đảng, lạm phát phi mã năm 1986 lên tới đỉnh điểm 774,7%, khiến giá cả leo thang từng ngày."
+    },
+    {
+      "id": 2,
+      "roomOrigin": "room2",
+      "question": "Đại hội đại biểu toàn quốc lần thứ VII của Đảng diễn ra tại đâu và vào thời gian nào?",
+      "options": [
+        "Tại Hội trường Thống Nhất (TP. Hồ Chí Minh), từ 15 - 18/12/1986",
+        "Tại Hội trường Ba Đình (Hà Nội), từ 24 - 27/6/1991",
+        "Tại Cung Văn hóa Hữu nghị Việt - Xô, từ 28/6 - 01/7/1996",
+        "Tại Hội trường Ba Đình (Hà Nội), từ 19 - 22/4/2001"
+      ],
+      "correct": 1,
+      "explanation": "Đại hội VII của Đảng họp từ ngày 24 đến ngày 27 tháng 6 năm 1991 tại Hội trường Ba Đình, Thủ đô Hà Nội với sự tham dự của 1.176 đại biểu."
+    },
+    {
+      "id": 3,
+      "roomOrigin": "room2",
+      "question": "Đại hội VII đã bầu đồng chí nào giữ chức Tổng Bí thư Ban Chấp hành Trung ương Đảng?",
+      "options": [
+        "Đồng chí Nguyễn Văn Linh",
+        "Đồng chí Đỗ Mười",
+        "Đồng chí Lê Khả Phiêu",
+        "Đồng chí Nông Đức Mạnh"
+      ],
+      "correct": 1,
+      "explanation": "Hội nghị lần thứ nhất Ban Chấp hành Trung ương Đảng khóa VII đã bầu đồng chí Đỗ Mười làm Tổng Bí thư; các đồng chí Nguyễn Văn Linh, Phạm Văn Đồng, Võ Chí Công làm Cố vấn BCH Trung ương."
+    },
+    {
+      "id": 4,
+      "roomOrigin": "room2",
+      "question": "Cương lĩnh 1991 được Đại hội VII thông qua đã xác định nền tảng tư tưởng và kim chỉ nam cho hành động của Đảng là gì?",
+      "options": [
+        "Chỉ riêng Chủ nghĩa Mác - Lênin",
+        "Chủ nghĩa Mác - Lênin và Tư tưởng Hồ Chí Minh",
+        "Chủ nghĩa yêu nước và truyền thống văn hóa dân tộc",
+        "Tư tưởng Hồ Chí Minh và tinh hoa văn hóa nhân loại"
+      ],
+      "correct": 1,
+      "explanation": "Cương lĩnh 1991 là mốc son lịch sử lần đầu tiên Đảng chính thức khẳng định: 'Đảng lấy chủ nghĩa Mác - Lênin và tư tưởng Hồ Chí Minh làm nền tảng tư tưởng, kim chỉ nam cho hành động'."
+    },
+    {
+      "id": 5,
+      "roomOrigin": "room3",
+      "question": "Chủ trương đối ngoại mang tính bước ngoặt lịch sử được đưa ra tại Đại hội VII (1991) là gì?",
+      "options": [
+        "Việt Nam sẵn sàng là bạn tin cậy của các nước",
+        "\"Việt Nam muốn là bạn với tất cả các nước trong cộng đồng thế giới\"",
+        "Hợp tác toàn diện và bình đẳng cùng có lợi",
+        "Chỉ quan hệ hữu nghị với các nước xã hội chủ nghĩa anh em"
+      ],
+      "correct": 1,
+      "explanation": "Văn kiện Đại hội VII nêu rõ chủ trương đối ngoại rộng mở: 'Việt Nam muốn là bạn với tất cả các nước trong cộng đồng thế giới, phấn đấu vì hòa bình, độc lập và phát triển'."
+    },
+    {
+      "id": 6,
+      "roomOrigin": "room4",
+      "question": "Trong nhiệm kỳ Đại hội VII (1991 - 1995), tốc độ tăng trưởng GDP bình quân hàng năm của Việt Nam đạt mức nào?",
+      "options": [
+        "3,5% mỗi năm",
+        "5,5% mỗi năm",
+        "8,2% mỗi năm",
+        "11,8% mỗi năm"
+      ],
+      "correct": 2,
+      "explanation": "Giai đoạn 1991 - 1995 ghi nhận bước phục hồi kỳ diệu của nền kinh tế với tốc độ tăng trưởng GDP bình quân đạt 8,2%/năm, vượt xa chỉ tiêu ban đầu đề ra (5,5 - 6,5%)."
+    }
+  ]
+}

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test Điều Khiển - Bảo tàng ảo</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { 
+      font-family: Arial, sans-serif;
+      background: #0a0c10;
+      color: #fff;
+      padding: 20px;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: #1a1c20;
+      padding: 30px;
+      border-radius: 12px;
+    }
+    h1 { color: #f59e0b; margin-bottom: 20px; }
+    .status-box {
+      background: #2a2c30;
+      padding: 20px;
+      border-radius: 8px;
+      margin: 20px 0;
+    }
+    .status-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px solid #3a3c40;
+    }
+    .status-ok { color: #34d399; }
+    .status-error { color: #f87171; }
+    .status-warning { color: #fbbf24; }
+    button {
+      background: #7f1d1d;
+      color: #fff;
+      border: none;
+      padding: 15px 30px;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      margin: 10px 5px;
+    }
+    button:hover { background: #991b1b; }
+    .test-result {
+      margin-top: 20px;
+      padding: 15px;
+      background: #0f172a;
+      border-radius: 8px;
+      font-family: monospace;
+    }
+    .key-test {
+      display: grid;
+      grid-template-columns: repeat(3, 60px);
+      gap: 10px;
+      justify-content: center;
+      margin: 20px 0;
+    }
+    .key {
+      background: #374151;
+      padding: 15px;
+      text-align: center;
+      border-radius: 8px;
+      font-weight: bold;
+    }
+    .key.active { background: #10b981; }
+    .key.empty { visibility: hidden; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🧪 KIỂM TRA ĐIỀU KHIỂN - BẢO TÀNG ẢO</h1>
+    
+    <div class="status-box">
+      <h3>📊 Trạng thái hệ thống:</h3>
+      <div id="status-list"></div>
+    </div>
+
+    <div class="test-result" id="test-output">
+      Bấm nút bên dưới để bắt đầu kiểm tra...
+    </div>
+
+    <div style="text-align: center;">
+      <button onclick="testPointerLock()">🎯 Test Pointer Lock</button>
+      <button onclick="testKeyboard()">⌨️ Test Bàn Phím</button>
+      <button onclick="startMuseum()">🚀 Mở Bảo Tàng</button>
+    </div>
+
+    <div class="key-test" id="key-display">
+      <div class="key empty"></div>
+      <div class="key" id="key-w">W</div>
+      <div class="key empty"></div>
+      <div class="key" id="key-a">A</div>
+      <div class="key" id="key-s">S</div>
+      <div class="key" id="key-d">D</div>
+    </div>
+  </div>
+
+  <script>
+    const statusList = document.getElementById('status-list');
+    const testOutput = document.getElementById('test-output');
+
+    // Kiểm tra trạng thái ban đầu
+    function checkSystem() {
+      const checks = [
+        { name: 'Three.js', ok: typeof THREE !== 'undefined' },
+        { name: 'Pointer Lock API', ok: 'pointerLockElement' in document },
+        { name: 'FullScreen API', ok: 'fullscreenEnabled' in document },
+        { name: 'WebGL', ok: (function() {
+          try {
+            const canvas = document.createElement('canvas');
+            return !!(canvas.getContext('webgl') || canvas.getContext('experimental-webgl'));
+          } catch(e) { return false; }
+        })() },
+        { name: 'HTTP/HTTPS', ok: location.protocol === 'http:' || location.protocol === 'https:' },
+        { name: 'Localhost', ok: location.hostname === 'localhost' || location.hostname === '127.0.0.1' }
+      ];
+
+      statusList.innerHTML = checks.map(c => `
+        <div class="status-item">
+          <span>${c.name}</span>
+          <span class="${c.ok ? 'status-ok' : 'status-error'}">${c.ok ? '✅ OK' : '❌ LỖI'}</span>
+        </div>
+      `).join('');
+    }
+
+    checkSystem();
+
+    // Test Pointer Lock
+    function testPointerLock() {
+      testOutput.innerHTML = '🎯 Đang test Pointer Lock...<br>';
+      
+      if (!('pointerLockElement' in document)) {
+        testOutput.innerHTML += '<span class="status-error">❌ Trình duyệt KHÔNG HỖ TRỢ Pointer Lock!</span>';
+        return;
+      }
+
+      testOutput.innerHTML += '✅ Trình duyệt hỗ trợ Pointer Lock<br>';
+      testOutput.innerHTML += '👉 Bấm vào màn hình đen bên dưới để test...<br><br>';
+      
+      // Tạo canvas test
+      const canvas = document.createElement('canvas');
+      canvas.width = 800;
+      canvas.height = 400;
+      canvas.style.background = '#000';
+      canvas.style.border = '2px solid #f59e0b';
+      canvas.style.cursor = 'pointer';
+      canvas.style.display = 'block';
+      canvas.style.margin = '10px auto';
+      
+      const ctx = canvas.getContext('2d');
+      ctx.fillStyle = '#fff';
+      ctx.font = '20px Arial';
+      ctx.textAlign = 'center';
+      ctx.fillText('Bấm vào đây để test Pointer Lock', 400, 200);
+
+      canvas.addEventListener('click', () => {
+        canvas.requestPointerLock();
+      });
+
+      document.addEventListener('pointerlockchange', () => {
+        if (document.pointerLockElement === canvas) {
+          testOutput.innerHTML += '<span class="status-ok">✅ Pointer Lock ĐÃ KÍCH HOẠT thành công!</span><br>';
+          testOutput.innerHTML += 'Di chuyển chuột để test, bấm ESC để thoát<br>';
+          
+          document.addEventListener('mousemove', (e) => {
+            if (document.pointerLockElement === canvas) {
+              ctx.fillStyle = '#000';
+              ctx.fillRect(0, 0, 800, 400);
+              ctx.fillStyle = '#34d399';
+              ctx.fillText(`Chuột: ${e.movementX}, ${e.movementY}`, 400, 200);
+            }
+          });
+        } else {
+          testOutput.innerHTML += '<span class="status-warning">⚠️ Pointer Lock đã tắt</span><br>';
+        }
+      });
+
+      testOutput.appendChild(canvas);
+    }
+
+    // Test Keyboard
+    function testKeyboard() {
+      testOutput.innerHTML = '⌨️ Đang test bàn phím...<br>Bấm các phím W/A/S/D để test<br>';
+      
+      const keys = { w: false, a: false, s: false, d: false };
+
+      document.addEventListener('keydown', (e) => {
+        const key = e.key.toLowerCase();
+        if (keys.hasOwnProperty(key)) {
+          keys[key] = true;
+          document.getElementById(`key-${key}`).classList.add('active');
+          testOutput.innerHTML = `✅ Phím ${key.toUpperCase()} đang được bấm<br>`;
+        }
+      });
+
+      document.addEventListener('keyup', (e) => {
+        const key = e.key.toLowerCase();
+        if (keys.hasOwnProperty(key)) {
+          keys[key] = false;
+          document.getElementById(`key-${key}`).classList.remove('active');
+        }
+      });
+    }
+
+    // Mở bảo tàng
+    function startMuseum() {
+      testOutput.innerHTML = '🚀 Đang mở bảo tàng ảo...<br>';
+      window.open('index.html', '_blank');
+    }
+  </script>
+</body>
+</html>
