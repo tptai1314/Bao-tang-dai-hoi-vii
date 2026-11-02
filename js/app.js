@@ -579,6 +579,163 @@ function createSpeakerStation(roomKey, cx, group) {
 }
 
 // Dựng Phòng Quiz (Tâm: x = 120, z = 0 | Kích thước 6m x 6m x 3m)
+
+// ============================================================================
+// MÀN HÌNH BẢNG XẾP HẠNG 3D TRONG PHÒNG QUIZ (REALTIME DIGITAL SCREEN)
+// ============================================================================
+let lbCanvas = null;
+let lbContext = null;
+let lbTexture3D = null;
+
+function create3DLeaderboardScreen(cx, group) {
+  lbCanvas = document.createElement('canvas');
+  lbCanvas.width = 1024;
+  lbCanvas.height = 768;
+  lbContext = lbCanvas.getContext('2d');
+
+  lbTexture3D = new THREE.CanvasTexture(lbCanvas);
+  lbTexture3D.minFilter = THREE.LinearFilter;
+
+  // Màn hình hiển thị LED 3D
+  const screenMat = new THREE.MeshBasicMaterial({ map: lbTexture3D });
+  const screenGeo = new THREE.PlaneGeometry(4.2, 2.8);
+  const screenMesh = new THREE.Mesh(screenGeo, screenMat);
+  
+  // Đặt ở tường đối diện cửa vào (Tường Đông x = 122.95), hướng thẳng về phía người chơi
+  screenMesh.position.set(cx + 2.95, 1.5, 0);
+  screenMesh.rotation.y = -Math.PI / 2;
+  group.add(screenMesh);
+
+  // Khung viền kim loại cho màn hình
+  const frameMat = new THREE.MeshStandardMaterial({ color: 0x1e293b, metalness: 0.8, roughness: 0.2 });
+  createBox(cx + 2.97, 1.5, 0, 0.04, 2.9, 4.3, frameMat, group);
+
+  // Đèn rọi nhẹ cho màn hình
+  const screenLight = new THREE.PointLight(0xfef08a, 1.2, 5);
+  screenLight.position.set(cx + 2.5, 2.4, 0);
+  group.add(screenLight);
+
+  // Đăng ký tương tác bấm vào màn hình để mở popup chi tiết
+  screenMesh.userData = {
+    isLeaderboardScreen: true,
+    title: "BẢNG VINH DANH THỜI GIAN THỰC (REALTIME)",
+    shortDesc: "Nhấp chuột để mở chi tiết Bảng xếp hạng và danh sách thí sinh!"
+  };
+  doorMeshes.push(screenMesh);
+
+  // Vẽ dữ liệu nếu đã có
+  if (typeof currentLeaderboardData !== 'undefined' && currentLeaderboardData.length > 0) {
+    drawLeaderboardOnCanvas(currentLeaderboardData);
+  } else {
+    drawLeaderboardOnCanvas([]);
+  }
+}
+
+function update3DLeaderboard(data) {
+  if (!lbContext || !lbTexture3D) return;
+  drawLeaderboardOnCanvas(data);
+  lbTexture3D.needsUpdate = true;
+}
+
+function drawLeaderboardOnCanvas(data) {
+  if (!lbContext) return;
+  const ctx = lbContext;
+  const w = 1024;
+  const h = 768;
+
+  // Nền đỏ đô sang trọng kết hợp gradient công nghệ
+  const grad = ctx.createLinearGradient(0, 0, 0, h);
+  grad.addColorStop(0, '#2d060a');
+  grad.addColorStop(0.5, '#170305');
+  grad.addColorStop(1, '#0b0c10');
+  ctx.fillStyle = grad;
+  ctx.fillRect(0, 0, w, h);
+
+  // Viền vàng kim tuyến
+  ctx.strokeStyle = '#f59e0b';
+  ctx.lineWidth = 8;
+  ctx.strokeRect(12, 12, w - 24, h - 24);
+
+  // Tiêu đề chính
+  ctx.fillStyle = '#fef08a';
+  ctx.font = 'bold 38px Arial, sans-serif';
+  ctx.textAlign = 'center';
+  ctx.fillText('🏆 BẢNG VINH DANH THỜI GIAN THỰC 🏆', w / 2, 65);
+
+  // Phụ đề
+  ctx.fillStyle = '#94a3b8';
+  ctx.font = 'bold 18px Arial, sans-serif';
+  ctx.fillText('THỬ THÁCH TRI THỨC ĐẠI HỘI VII (1991) • TỰ ĐỘNG ĐỒNG BỘ FIREBASE', w / 2, 102);
+
+  // Thanh tiêu đề bảng
+  const tableY = 135;
+  ctx.fillStyle = 'rgba(255, 255, 255, 0.08)';
+  ctx.fillRect(40, tableY, w - 80, 46);
+
+  ctx.fillStyle = '#f59e0b';
+  ctx.font = 'bold 18px Arial, sans-serif';
+  ctx.textAlign = 'left';
+  ctx.fillText('HẠNG', 60, tableY + 30);
+  ctx.fillText('HỌ VÀ TÊN', 180, tableY + 30);
+  ctx.textAlign = 'center';
+  ctx.fillText('ĐIỂM SỐ', 740, tableY + 30);
+  ctx.fillText('THỜI GIAN', 890, tableY + 30);
+
+  // Hiển thị danh sách Top 7
+  const list = (data && data.length > 0) ? data.slice(0, 7) : [
+    { name: "Đang nạp dữ liệu Firebase...", score: 10, timeSpent: 30 }
+  ];
+
+  let currentY = tableY + 54;
+  list.forEach((item, idx) => {
+    // Màu nền từng hàng
+    if (idx === 0) ctx.fillStyle = 'rgba(245, 158, 11, 0.22)';
+    else if (idx === 1) ctx.fillStyle = 'rgba(148, 163, 184, 0.16)';
+    else if (idx === 2) ctx.fillStyle = 'rgba(180, 83, 9, 0.16)';
+    else ctx.fillStyle = (idx % 2 === 0) ? 'rgba(255, 255, 255, 0.03)' : 'rgba(255, 255, 255, 0.06)';
+
+    ctx.fillRect(40, currentY, w - 80, 52);
+
+    // Huy hiệu hạng
+    ctx.font = 'bold 24px Arial, sans-serif';
+    ctx.textAlign = 'left';
+    let rankText = `#${idx + 1}`;
+    if (idx === 0) rankText = '🥇 TOP 1';
+    else if (idx === 1) rankText = '🥈 TOP 2';
+    else if (idx === 2) rankText = '🥉 TOP 3';
+
+    ctx.fillStyle = (idx === 0) ? '#fef08a' : ((idx === 1) ? '#e2e8f0' : ((idx === 2) ? '#fed7aa' : '#94a3b8'));
+    ctx.fillText(rankText, 60, currentY + 34);
+
+    // Tên
+    ctx.font = 'bold 22px Arial, sans-serif';
+    ctx.fillStyle = '#ffffff';
+    let nameStr = item.name || 'Khách tham quan';
+    if (nameStr.length > 25) nameStr = nameStr.substring(0, 24) + '...';
+    ctx.fillText(nameStr, 180, currentY + 34);
+
+    // Điểm
+    ctx.textAlign = 'center';
+    ctx.font = 'bold 24px Arial, sans-serif';
+    ctx.fillStyle = '#fbbf24';
+    ctx.fillText(`${item.score} / 10`, 740, currentY + 34);
+
+    // Thời gian làm bài
+    ctx.font = '19px Arial, sans-serif';
+    ctx.fillStyle = '#cbd5e1';
+    const timeStr = item.timeSpent ? `${item.timeSpent}s` : '--';
+    ctx.fillText(timeStr, 890, currentY + 34);
+
+    currentY += 58;
+  });
+
+  // Footer nhắc nhở tương tác
+  ctx.fillStyle = '#34d399';
+  ctx.font = 'bold 22px Arial, sans-serif';
+  ctx.textAlign = 'center';
+  ctx.fillText('► NHẤP CHUỘT VÀO MÀN HÌNH ĐỂ XEM CHI TIẾT BẢNG VINH DANH ◄', w / 2, h - 35);
+}
+
 function buildQuizRoom(floorMat, ceilMat, wallMat) {
   const group = roomGroups.quiz;
   const cx = 120;
