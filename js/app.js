@@ -118,6 +118,35 @@ function initThreeJS() {
   // Controls (PointerLockControls)
   controls = new THREE.PointerLockControls(camera, document.body);
 
+  // Tinh chỉnh chống chóng mặt (Anti-dizziness / Motion Comfort)
+  controls.disconnect();
+  const _eulerLook = new THREE.Euler(0, 0, 0, 'YXZ');
+  const _PI_2 = Math.PI / 2;
+  const MOUSE_SENSITIVITY = 0.0011; // Giảm 45% so với 0.002 mặc định giúp lia camera êm ái, chống say
+
+  document.addEventListener('mousemove', (event) => {
+    if (!controls.isLocked) return;
+    const movementX = event.movementX || event.mozMovementX || event.webkitMovementX || 0;
+    const movementY = event.movementY || event.mozMovementY || event.webkitMovementY || 0;
+
+    _eulerLook.setFromQuaternion(camera.quaternion);
+    _eulerLook.y -= movementX * MOUSE_SENSITIVITY;
+    _eulerLook.x -= movementY * MOUSE_SENSITIVITY;
+    _eulerLook.x = Math.max(_PI_2 - controls.maxPolarAngle, Math.min(_PI_2 - controls.minPolarAngle, _eulerLook.x));
+    camera.quaternion.setFromEuler(_eulerLook);
+    controls.dispatchEvent({ type: 'change' });
+  }, false);
+
+  document.addEventListener('pointerlockchange', () => {
+    if (document.pointerLockElement === document.body) {
+      controls.isLocked = true;
+      controls.dispatchEvent({ type: 'lock' });
+    } else {
+      controls.isLocked = false;
+      controls.dispatchEvent({ type: 'unlock' });
+    }
+  }, false);
+
   // Ánh sáng chung
   const ambientLight = new THREE.AmbientLight(0xfff5e6, 0.95);
   scene.add(ambientLight);
@@ -1859,6 +1888,7 @@ function closeQuizModal() {
 }
 
 function startQuizSession() {
+  window.quizStartTime = Date.now();
   currentQuizIdx = 0;
   quizScore = 0;
 
@@ -1943,6 +1973,12 @@ function finishQuiz() {
 
   document.getElementById('cert-rank-display').textContent = rankTitle;
   document.getElementById('cert-date-display').textContent = `Cấp ngày: ${new Date().toLocaleDateString('vi-VN')}`;
+
+  // Gửi điểm số lên Bảng xếp hạng Realtime
+  const timeSpent = Math.max(1, Math.round((Date.now() - (window.quizStartTime || Date.now())) / 1000));
+  if (typeof submitScoreToLeaderboard === 'function') {
+    submitScoreToLeaderboard(candidateName, quizScore, timeSpent);
+  }
 }
 
 function downloadCertificatePNG() {
@@ -2251,7 +2287,7 @@ function animate() {
     direction.x = Number(moveRight) - Number(moveLeft);
     direction.normalize();
 
-    const speed = 36.0;
+    const speed = 20.0; // Tốc độ tản bộ bảo tàng êm ái, chống chóng mặt
     if (moveForward || moveBackward) velocity.z -= direction.z * speed * delta;
     if (moveLeft || moveRight) velocity.x -= direction.x * speed * delta;
 
