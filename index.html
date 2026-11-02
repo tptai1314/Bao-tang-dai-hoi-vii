@@ -113,7 +113,7 @@
         <button id="btn-toggle-audio" class="hud-btn" title="Bật/Tắt nhạc nền">Âm thanh: Bật</button>
         <button id="btn-open-map" class="hud-btn" title="Sơ đồ tuyến tính & Chuyển phòng">Sơ đồ Tuyến Tính</button>
         <button id="btn-open-refs" class="hud-btn" title="Thư mục nguồn & Giáo trình trích dẫn">📚 Tài liệu nguồn</button>
-        <button id="btn-open-lb" class="hud-btn highlight-gold" onclick="document.getElementById('leaderboard-modal').classList.remove('hidden'); if(typeof renderLeaderboardUI === 'function') renderLeaderboardUI(currentLeaderboardData);" title="Xem bảng điểm thi đua">🏆 Bảng Xếp Hạng</button>
+        <button id="btn-open-lb" class="hud-btn highlight-gold" onclick="document.getElementById('leaderboard-modal').classList.remove('hidden'); if(typeof renderLeaderboardUI === 'function') renderLeaderboardUI(currentLeaderboardData);" title="Xem danh sách vinh danh thi đua">🏆 Bảng Vàng</button>
       </div>
     </div>
 
@@ -260,8 +260,8 @@
         
         <div class="quiz-intro-lb-preview">
           <div class="lb-header-small">
-            <span>🏆 BẢNG XẾP HẠNG REALTIME (TOP THI ĐUA):</span>
-            <span class="lb-live-pulse-small">● LIVE</span>
+            <span>★ BẢNG VÀNG VINH DANH THI ĐUA ★</span>
+            <span class="lb-live-pulse-small">★ TOP ĐẦU</span>
           </div>
           <div class="lb-table-head">
             <span class="lb-col-rank">Hạng</span>
@@ -270,18 +270,18 @@
             <span class="lb-col-time">Tốc độ</span>
           </div>
           <div class="lb-table-body lb-preview-body" id="leaderboard-list-body-intro">
-            <!-- Cập nhật tự động từ Firebase -->
+            <!-- Danh sách tuyên dương -->
           </div>
         </div>
 
         <div class="quiz-name-input-box">
-          <label for="quiz-user-name">Họ và tên của bạn (để in lên Bằng khen & ghi danh):</label>
+          <label for="quiz-user-name">Họ và tên người tham gia (để cấp Giấy chứng nhận & Vinh danh):</label>
           <input type="text" id="quiz-user-name" placeholder="Ví dụ: Nguyễn Văn A" maxlength="40">
         </div>
 
         <div class="quiz-btn-row">
           <button id="btn-start-quiz" class="btn-primary">BẮT ĐẦU LÀM BÀI THỬ THÁCH</button>
-          <button id="btn-toggle-lb-intro" class="btn-secondary highlight-gold" onclick="document.getElementById('leaderboard-modal').classList.remove('hidden')">🏆 Xem Bảng Xếp Hạng</button>
+          <button id="btn-toggle-lb-intro" class="btn-secondary highlight-gold" onclick="document.getElementById('leaderboard-modal').classList.remove('hidden')">🏆 Xem Bảng Vàng Vinh Danh</button>
         </div>
       </div>
 
@@ -320,20 +320,20 @@
         </div>
         <div class="cert-actions">
           <button id="btn-download-cert" class="btn-primary highlight-gold">📥 TẢI CHỨNG NHẬN (ẢNH PNG)</button>
-          <button id="btn-show-lb-result" class="btn-primary highlight-gold" onclick="document.getElementById('leaderboard-modal').classList.remove('hidden'); if(typeof renderLeaderboardUI==='function'){renderLeaderboardUI(currentLeaderboardData);}">🏆 XEM BẢNG XẾP HẠNG TOP</button>
+          <button id="btn-show-lb-result" class="btn-primary highlight-gold" onclick="document.getElementById('leaderboard-modal').classList.remove('hidden'); if(typeof renderLeaderboardUI==='function'){renderLeaderboardUI(currentLeaderboardData);}">🏆 XEM BẢNG VÀNG VINH DANH</button>
           <button id="btn-restart-quiz" class="btn-secondary">Làm lại thử thách</button>
           <button id="btn-back-to-museum" class="btn-secondary">Tiếp tục tham quan 3D</button>
         </div>
 
-        <!-- BẢNG XẾP HẠNG REALTIME ĐỒNG BỘ -->
+        <!-- BẢNG VÀNG VINH DANH PHONG TRÀO THI ĐUA -->
         <div class="leaderboard-panel-inline">
           <div class="lb-header">
             <span class="lb-badge-icon">🏆</span>
             <div>
-              <h3>BẢNG VINH DANH THỜI GIAN THỰC</h3>
-              <p class="lb-sub">Đồng bộ tự động qua Firebase Realtime Database</p>
+              <h3>BẢNG VÀNG DANH DỰ TOÀN QUỐC</h3>
+              <p class="lb-sub">Tuyên dương các cá nhân hoàn thành xuất sắc thử thách tìm hiểu Lịch sử Đảng</p>
             </div>
-            <span class="lb-live-pulse">● TRỰC TIẾP</span>
+            <span class="lb-live-pulse">★ TUYÊN DƯƠNG</span>
           </div>
           <div class="lb-table-head">
             <span class="lb-col-rank">Hạng</span>
@@ -342,7 +342,7 @@
             <span class="lb-col-time">Tốc độ</span>
           </div>
           <div class="lb-table-body" id="leaderboard-list-body">
-            <!-- Tự động cập nhật Realtime từ Firebase -->
+            <!-- Danh sách vinh danh -->
           </div>
         </div>
 
@@ -379,8 +379,8 @@
       <button class="modal-close" onclick="document.getElementById('leaderboard-modal').classList.add('hidden')">&times;</button>
       <div class="lb-modal-header">
         <span class="lb-trophy-large">🏆</span>
-        <h2>BẢNG VINH DANH TRI THỨC LỊCH SỬ</h2>
-        <p class="subtitle">Đại hội VII của Đảng (1991) - Đồng bộ trực tiếp nhiều người chơi</p>
+        <h2>BẢNG VÀNG DANH DỰ TRI THỨC LỊCH SỬ</h2>
+        <p class="subtitle">Đại hội VII của Đảng (1991) - Tuyên dương phong trào thi đua học tập Lịch sử</p>
       </div>
       <div class="lb-table-head">
         <span class="lb-col-rank">Hạng</span>
@@ -389,7 +389,7 @@
         <span class="lb-col-time">Thời gian</span>
       </div>
       <div class="lb-table-body" id="leaderboard-list-body-modal">
-        <!-- Đồng bộ từ currentLeaderboardData -->
+        <!-- Danh sách vinh danh -->
       </div>
       <div class="lb-footer-note">
         💡 Tham gia làm Quiz tại <strong>Phòng Quiz (Phím 5)</strong> để ghi tên lên bảng vàng!

@@ -623,8 +623,8 @@ function create3DLeaderboardScreen(cx, group) {
   // Đăng ký tương tác bấm vào màn hình để mở popup chi tiết
   screenMesh.userData = {
     isLeaderboardScreen: true,
-    title: "BẢNG VINH DANH THỜI GIAN THỰC (REALTIME)",
-    shortDesc: "Nhấp chuột để mở chi tiết Bảng xếp hạng và danh sách thí sinh!"
+    title: "BẢNG VÀNG DANH DỰ ĐẠI HỘI VII",
+    shortDesc: "Nhấp chuột để mở Bảng vàng vinh danh phong trào thi đua!"
   };
   doorMeshes.push(screenMesh);
 
@@ -680,12 +680,12 @@ function drawLeaderboardOnCanvas(data) {
   ctx.fillStyle = '#fef08a';
   ctx.font = 'bold 74px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif';
   ctx.textAlign = 'center';
-  ctx.fillText('🏆 BẢNG VINH DANH THỜI GIAN THỰC 🏆', w / 2, 125);
+  ctx.fillText('🏆 BẢNG VÀNG DANH DỰ ĐẠI HỘI VII 🏆', w / 2, 125);
 
   // Phụ đề
   ctx.fillStyle = '#ffffff';
   ctx.font = 'bold 34px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif';
-  ctx.fillText('THỬ THÁCH TRI THỨC ĐẠI HỘI VII (1991) • ĐỒNG BỘ TRỰC TIẾP FIREBASE', w / 2, 190);
+  ctx.fillText('TUỔI TRẺ HỌC TẬP VÀ LÀM THEO NGHỊ QUYẾT ĐẠI HỘI VII (1991)', w / 2, 190);
 
   // 4. Thanh tiêu đề bảng (Table Head)
   const tableY = 250;
@@ -699,14 +699,14 @@ function drawLeaderboardOnCanvas(data) {
   ctx.font = 'bold 36px Arial, sans-serif';
   ctx.textAlign = 'left';
   ctx.fillText('HẠNG', 110, tableY + 56);
-  ctx.fillText('HỌ VÀ TÊN THÍ SINH', 360, tableY + 56);
+  ctx.fillText('HỌ VÀ TÊN NGƯỜI THAM GIA', 360, tableY + 56);
   ctx.textAlign = 'center';
   ctx.fillText('ĐIỂM SỐ', 1480, tableY + 56);
   ctx.fillText('TỐC ĐỘ', 1780, tableY + 56);
 
   // 5. Hiển thị danh sách Top 7 người chơi
   const list = (data && data.length > 0) ? data.slice(0, 7) : [
-    { name: "Đang nạp dữ liệu từ máy chủ...", score: 10, timeSpent: 30 }
+    { name: "Đang cập nhật danh sách...", score: 10, timeSpent: 30 }
   ];
 
   let currentY = tableY + 100;
@@ -764,7 +764,7 @@ function drawLeaderboardOnCanvas(data) {
   ctx.fillStyle = '#34d399';
   ctx.font = 'bold 40px Arial, sans-serif';
   ctx.textAlign = 'center';
-  ctx.fillText('► BẤM VÀO MÀN HÌNH ĐỂ MỞ BẢNG XẾP HẠNG CHI TIẾT ◄', w / 2, h - 55);
+  ctx.fillText('► BẤM VÀO MÀN HÌNH ĐỂ XEM CHI TIẾT BẢNG VÀNG ◄', w / 2, h - 55);
 }
 
 function buildQuizRoom(floorMat, ceilMat, wallMat) {

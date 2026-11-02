@@ -64,11 +64,11 @@ function loadLocalLeaderboard() {
     } else {
       // Dữ liệu mẫu ban đầu để giao diện luôn đẹp mắt
       currentLeaderboardData = [
-        { name: "Đoàn Thanh Niên", score: 10, timeSpent: 45, date: "Hôm nay" },
+        { name: "Đoàn TNCS Hồ Chí Minh", score: 10, timeSpent: 42, date: "Hôm nay" },
+        { name: "Chi đoàn Lịch sử Đảng", score: 10, timeSpent: 50, date: "Hôm nay" },
         { name: "Nguyễn Văn Hùng", score: 10, timeSpent: 58, date: "Hôm nay" },
         { name: "Trần Thị Mai", score: 9, timeSpent: 52, date: "Hôm nay" },
-        { name: "Lê Hoàng Nam", score: 9, timeSpent: 65, date: "Hôm nay" },
-        { name: "Phạm Minh Đức", score: 8, timeSpent: 70, date: "Hôm nay" }
+        { name: "Lê Hoàng Nam", score: 9, timeSpent: 65, date: "Hôm nay" }
       ];
     }
   } catch (e) {
