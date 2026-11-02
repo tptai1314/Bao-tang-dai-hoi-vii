@@ -1521,6 +1521,10 @@ function onKeyDown(event) {
     case 'ArrowRight':
       moveRight = true;
       break;
+    case 'ShiftLeft':
+    case 'ShiftRight':
+      isSprinting = true;
+      break;
     case 'Space':
       if (canJump === true && controls.isLocked) {
         velocity.y = 10.0;
@@ -1572,6 +1576,10 @@ function onKeyUp(event) {
     case 'KeyD':
     case 'ArrowRight':
       moveRight = false;
+      break;
+    case 'ShiftLeft':
+    case 'ShiftRight':
+      isSprinting = false;
       break;
   }
 }
@@ -2485,7 +2493,8 @@ function animate() {
     direction.x = Number(moveRight) - Number(moveLeft);
     direction.normalize();
 
-    const speed = 20.0; // Tốc độ tản bộ bảo tàng êm ái, chống chóng mặt
+    const baseSpeed = 32.0; // Tốc độ đi bộ nhanh nhạy, tự nhiên
+    const speed = isSprinting ? 46.0 : baseSpeed;
     if (moveForward || moveBackward) velocity.z -= direction.z * speed * delta;
     if (moveLeft || moveRight) velocity.x -= direction.x * speed * delta;
 
@@ -2510,8 +2519,8 @@ function animate() {
       }
     }
 
-    // Kiểm tra bước qua cửa để teleport tự động
-    checkDoorProximity(camera.position.x, camera.position.z);
+    // Đã tắt tự động teleport khi đi ngang cửa để người dùng không bị giật mình chuyển phòng bất ngờ
+    // checkDoorProximity(camera.position.x, camera.position.z);
 
     // Cập nhật tên phòng và thanh điều hướng trực tiếp khi người xem đổi phòng
     const curRoomKey = getCurrentRoomKey(camera.position.x);
