@@ -15,7 +15,7 @@ let roomGroups = {
 };
 let raycaster, mouse;
 let moveForward = false, moveBackward = false, moveLeft = false, moveRight = false;
-let canJump = false;
+let canJump = false, isSprinting = false;
 let velocity = new THREE.Vector3();
 let direction = new THREE.Vector3();
 let prevTime = performance.now();
