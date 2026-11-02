@@ -750,10 +750,7 @@ function buildQuizRoom(floorMat, ceilMat, wallMat) {
   // Trần cao 3m
   createBox(cx, 3.05, 0, 6, 0.1, 6, ceilMat, group);
 
-  // Ánh sáng dịu nhẹ tự nhiên cho phòng Quiz (không rọi đèn gắt xuống sàn)
-  const quizLight = new THREE.PointLight(0xfff7ed, 0.9, 10);
-  quizLight.position.set(cx, 2.7, 0);
-  group.add(quizLight);
+  // Phòng Quiz sử dụng ánh sáng môi trường khuếch tán tự nhiên của bảo tàng, đã bỏ hoàn toàn bóng đèn chói
 
   // Tường sau (z = -3.1) & Tường trước (z = 3.1)
   createBox(cx, 1.5, -3.1, 6, 3.0, 0.2, wallMat, group);
@@ -1127,11 +1124,9 @@ function createQuizCenterpiece() {
 
   const emblemGeo = new THREE.OctahedronGeometry(0.5, 1);
   const emblemMat = new THREE.MeshStandardMaterial({
-    color: 0xf59e0b,
-    emissive: 0xd97706,
-    emissiveIntensity: 0.8,
-    roughness: 0.2,
-    metalness: 0.9
+    color: 0xd97706,
+    roughness: 0.35,
+    metalness: 0.8
   });
   const emblem = new THREE.Mesh(emblemGeo, emblemMat);
   emblem.position.y = 1.25;
