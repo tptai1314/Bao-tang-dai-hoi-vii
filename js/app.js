@@ -625,6 +625,7 @@ function buildQuizRoom(floorMat, ceilMat, wallMat) {
 
   // Bảng chữ lớn treo tường sau phòng Quiz
   createQuizBackdropSign(cx, group);
+  create3DLeaderboardScreen(cx, group);
 }
 
 // Tạo Bảng vinh danh sau lưng phòng Quiz
@@ -1297,6 +1298,14 @@ function handleSpeakerClick(speakerData) {
 function handleDoorClick(doorData) {
   if (doorData.isQuizPodium) {
     openQuizModal();
+    return;
+  }
+  if (doorData.isLeaderboardScreen) {
+    document.getElementById('leaderboard-modal').classList.remove('hidden');
+    if (controls.isLocked) controls.unlock();
+    if (typeof renderLeaderboardUI === 'function') {
+      renderLeaderboardUI(currentLeaderboardData);
+    }
     return;
   }
   if (doorData.targetRoom) {

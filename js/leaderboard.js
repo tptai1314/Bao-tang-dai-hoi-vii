@@ -118,9 +118,13 @@ function saveLocalScore(entry) {
 
 // Render danh sách Bảng xếp hạng lên HTML
 function renderLeaderboardUI(list) {
+  if (typeof update3DLeaderboard === 'function') {
+    update3DLeaderboard(list);
+  }
   const containers = [
     document.getElementById('leaderboard-list-body'),
-    document.getElementById('leaderboard-list-body-modal')
+    document.getElementById('leaderboard-list-body-modal'),
+    document.getElementById('leaderboard-list-body-intro')
   ].filter(Boolean);
 
   if (containers.length === 0) return;
