@@ -750,7 +750,13 @@ function buildQuizRoom(floorMat, ceilMat, wallMat) {
   // Trần cao 3m
   createBox(cx, 3.05, 0, 6, 0.1, 6, ceilMat, group);
 
-  // Phòng Quiz sử dụng ánh sáng môi trường khuếch tán tự nhiên của bảo tàng, đã bỏ hoàn toàn bóng đèn chói
+  // Ánh sáng tràn ngập phòng Quiz: Sáng rõ đều, 100% không bóng đổ, không chói mắt
+  const quizHemiLight = new THREE.HemisphereLight(0xfffbeb, 0xf1f5f9, 1.4);
+  quizHemiLight.position.set(cx, 2.5, 0);
+  group.add(quizHemiLight);
+
+  const quizAmbientSoft = new THREE.AmbientLight(0xfff8ee, 0.8);
+  group.add(quizAmbientSoft);
 
   // Tường sau (z = -3.1) & Tường trước (z = 3.1)
   createBox(cx, 1.5, -3.1, 6, 3.0, 0.2, wallMat, group);
