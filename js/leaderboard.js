@@ -64,11 +64,9 @@ function loadLocalLeaderboard() {
     } else {
       // Dữ liệu mẫu ban đầu để giao diện luôn đẹp mắt
       currentLeaderboardData = [
-        { name: "Đoàn TNCS Hồ Chí Minh", score: 6, timeSpent: 42, date: "Hôm nay" },
-        { name: "Chi đoàn Lịch sử Đảng", score: 6, timeSpent: 50, date: "Hôm nay" },
-        { name: "Nguyễn Văn Hùng", score: 6, timeSpent: 58, date: "Hôm nay" },
-        { name: "Trần Thị Mai", score: 5, timeSpent: 52, date: "Hôm nay" },
-        { name: "Lê Hoàng Nam", score: 5, timeSpent: 65, date: "Hôm nay" }
+        { name: "Nhựt Anh", score: 6, timeSpent: 35, dateStr: "Hôm nay" },
+        { name: "Kiến Quốc", score: 6, timeSpent: 40, dateStr: "Hôm nay" },
+        { name: "Nhựt Tín", score: 5, timeSpent: 46, dateStr: "Hôm nay" }
       ];
     }
   } catch (e) {
