@@ -2200,6 +2200,18 @@ function finishQuiz() {
   document.getElementById('cert-name-display').textContent = displayName;
   document.getElementById('cert-score-display').textContent = `${quizScore} / ${totalQ} Điểm`;
 
+  // Tính và hiển thị thời gian hoàn thành
+  const timeSpent = Math.max(1, Math.round((Date.now() - (window.quizStartTime || Date.now())) / 1000));
+  const timeFormatted = (timeSpent >= 60)
+    ? `${Math.floor(timeSpent / 60)} phút ${timeSpent % 60} giây`
+    : `${timeSpent} giây`;
+  window.lastQuizTimeSpentStr = `${timeSpent}s`;
+
+  const timeDisplay = document.getElementById('cert-time-display');
+  if (timeDisplay) {
+    timeDisplay.textContent = `⏱️ Thời gian hoàn thành: ${timeFormatted}`;
+  }
+
   // Xếp loại danh hiệu chuẩn theo thang điểm 6
   let rankTitle = "Chiến Sĩ Lịch Sử Xuất Sắc (Huy Hiệu Vàng)";
   if (quizScore <= 2) {
@@ -2212,7 +2224,6 @@ function finishQuiz() {
   document.getElementById('cert-date-display').textContent = `Cấp ngày: ${new Date().toLocaleDateString('vi-VN')}`;
 
   // Gửi điểm số lên Bảng xếp hạng Realtime
-  const timeSpent = Math.max(1, Math.round((Date.now() - (window.quizStartTime || Date.now())) / 1000));
   if (typeof submitScoreToLeaderboard === 'function') {
     submitScoreToLeaderboard(candidateName, quizScore, timeSpent);
   }
@@ -2288,11 +2299,13 @@ function downloadCertificatePNG() {
   ctx.fillText('ĐẠI HỘI ĐẠI BIỂU TOÀN QUỐC LẦN THỨ VII CỦA ĐẢNG (1991)', 600, 520);
 
   ctx.fillStyle = '#34d399';
-  ctx.font = 'bold 36px Arial';
+  ctx.font = 'bold 34px Arial';
   let rankTitle = "Chiến Sĩ Lịch Sử Xuất Sắc (Huy Hiệu Vàng)";
-  if (quizScore < 4) rankTitle = "Đoàn Viên Tích Cực (Huy Hiệu Đồng)";
-  else if (quizScore <= 5) rankTitle = "Chiến Sĩ Tri Thức Giỏi (Huy Hiệu Bạc)";
-  ctx.fillText(`Kết quả: ${quizScore}/${QUIZ_QUESTIONS.length} Điểm  —  Danh hiệu: ${rankTitle}`, 600, 590);
+  if (quizScore <= 2) rankTitle = "Đoàn Viên Tích Cực (Huy Hiệu Đồng)";
+  else if (quizScore <= 4) rankTitle = "Chiến Sĩ Tri Thức Giỏi (Huy Hiệu Bạc)";
+  const totalQ = (activeQuizQuestions && activeQuizQuestions.length > 0) ? activeQuizQuestions.length : 6;
+  const timeSuffix = window.lastQuizTimeSpentStr ? ` (Thời gian: ${window.lastQuizTimeSpentStr})` : '';
+  ctx.fillText(`Kết quả: ${quizScore}/${totalQ} Điểm${timeSuffix}  —  Danh hiệu: ${rankTitle}`, 600, 590);
 
   const dateStr = `Hà Nội, ngày ${new Date().getDate()} tháng ${new Date().getMonth() + 1} năm ${new Date().getFullYear()}`;
   ctx.fillStyle = '#94a3b8';
