@@ -1216,6 +1216,18 @@ body, html {
   color: var(--accent-gold);
 }
 
+.cert-time {
+  font-size: 15px;
+  font-weight: 700;
+  color: #38bdf8;
+  background: rgba(56, 189, 248, 0.12);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  border-radius: 20px;
+  padding: 4px 14px;
+  display: inline-block;
+  margin: 6px auto 10px auto;
+}
+
 .cert-rank {
   font-size: 16px;
   color: #34d399;
