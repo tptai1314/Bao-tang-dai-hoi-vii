@@ -64,11 +64,11 @@ function loadLocalLeaderboard() {
     } else {
       // Dữ liệu mẫu ban đầu để giao diện luôn đẹp mắt
       currentLeaderboardData = [
-        { name: "Đoàn TNCS Hồ Chí Minh", score: 10, timeSpent: 42, date: "Hôm nay" },
-        { name: "Chi đoàn Lịch sử Đảng", score: 10, timeSpent: 50, date: "Hôm nay" },
-        { name: "Nguyễn Văn Hùng", score: 10, timeSpent: 58, date: "Hôm nay" },
-        { name: "Trần Thị Mai", score: 9, timeSpent: 52, date: "Hôm nay" },
-        { name: "Lê Hoàng Nam", score: 9, timeSpent: 65, date: "Hôm nay" }
+        { name: "Đoàn TNCS Hồ Chí Minh", score: 6, timeSpent: 42, date: "Hôm nay" },
+        { name: "Chi đoàn Lịch sử Đảng", score: 6, timeSpent: 50, date: "Hôm nay" },
+        { name: "Nguyễn Văn Hùng", score: 6, timeSpent: 58, date: "Hôm nay" },
+        { name: "Trần Thị Mai", score: 5, timeSpent: 52, date: "Hôm nay" },
+        { name: "Lê Hoàng Nam", score: 5, timeSpent: 65, date: "Hôm nay" }
       ];
     }
   } catch (e) {
@@ -148,7 +148,7 @@ function renderLeaderboardUI(list) {
       <div class="lb-row ${rankClass}">
         <div class="lb-col-rank">${rankBadge}</div>
         <div class="lb-col-name" title="${item.name}">${escapeHtml(item.name)}</div>
-        <div class="lb-col-score"><strong>${item.score}</strong>/10</div>
+        <div class="lb-col-score"><strong>${item.score}</strong>/6</div>
         <div class="lb-col-time">${timeFormatted}</div>
       </div>
     `;

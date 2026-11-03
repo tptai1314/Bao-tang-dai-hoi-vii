@@ -706,7 +706,7 @@ function drawLeaderboardOnCanvas(data) {
 
   // 5. Hiển thị danh sách Top 7 người chơi
   const list = (data && data.length > 0) ? data.slice(0, 7) : [
-    { name: "Đang cập nhật danh sách...", score: 10, timeSpent: 30 }
+    { name: "Đang cập nhật danh sách...", score: 6, timeSpent: 30 }
   ];
 
   let currentY = tableY + 100;
@@ -749,7 +749,7 @@ function drawLeaderboardOnCanvas(data) {
     ctx.textAlign = 'center';
     ctx.font = 'bold 46px Arial, sans-serif';
     ctx.fillStyle = '#fef08a';
-    ctx.fillText(`${item.score} / 10`, 1480, currentY + 62);
+    ctx.fillText(`${item.score} / 6`, 1480, currentY + 62);
 
     // Cột Thời gian làm bài
     ctx.font = '36px Arial, sans-serif';
@@ -2079,7 +2079,26 @@ function updateRoomVisibility(currentKey) {
   });
 }
 
-// 11. HỆ THỐNG QUIZ TRẮC NGHIỆM
+// 11. HỆ THỐNG QUIZ TRẮC NGHIỆM (RANDOM 6 CÂU HỎI TỪ NGÂN HÀNG ĐỀ)
+let activeQuizQuestions = [];
+
+function selectRandomQuizQuestions(count = 6) {
+  // Ưu tiên lấy từ QUIZ_QUESTION_BANK (questions/quiz-questions.js)
+  const bank = (typeof QUIZ_QUESTION_BANK !== 'undefined' && Array.isArray(QUIZ_QUESTION_BANK) && QUIZ_QUESTION_BANK.length > 0)
+    ? QUIZ_QUESTION_BANK
+    : (typeof QUIZ_QUESTIONS !== 'undefined' ? QUIZ_QUESTIONS : []);
+  
+  if (bank.length === 0) return [];
+  
+  // Clone và xáo trộn ngẫu nhiên bằng thuật toán Fisher-Yates
+  const shuffled = [...bank];
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+  return shuffled.slice(0, Math.min(count, shuffled.length));
+}
+
 function openQuizModal() {
   controls.unlock();
   document.getElementById('quiz-modal').classList.remove('hidden');
@@ -2097,6 +2116,8 @@ function startQuizSession() {
   window.quizStartTime = Date.now();
   currentQuizIdx = 0;
   quizScore = 0;
+  // Bốc ngẫu nhiên 6 câu hỏi từ Ngân hàng đề thi
+  activeQuizQuestions = selectRandomQuizQuestions(6);
 
   const nameInput = document.getElementById('quiz-user-name');
   if (nameInput && nameInput.value.trim().length > 0) {
@@ -2113,8 +2134,9 @@ function startQuizSession() {
 
 function renderQuizQuestion() {
   quizAnswered = false;
-  const q = QUIZ_QUESTIONS[currentQuizIdx];
-  document.getElementById('quiz-progress').textContent = `Câu ${currentQuizIdx + 1} / ${QUIZ_QUESTIONS.length}`;
+  const questionsList = (activeQuizQuestions && activeQuizQuestions.length > 0) ? activeQuizQuestions : QUIZ_QUESTIONS;
+  const q = questionsList[currentQuizIdx];
+  document.getElementById('quiz-progress').textContent = `Câu ${currentQuizIdx + 1} / ${questionsList.length}`;
   document.getElementById('quiz-score-live').textContent = `Điểm: ${quizScore}`;
   document.getElementById('quiz-question-text').textContent = q.question;
 
@@ -2135,7 +2157,8 @@ function handleQuizSelect(selectedIdx, clickedBtn) {
   if (quizAnswered) return;
   quizAnswered = true;
 
-  const q = QUIZ_QUESTIONS[currentQuizIdx];
+  const questionsList = (activeQuizQuestions && activeQuizQuestions.length > 0) ? activeQuizQuestions : QUIZ_QUESTIONS;
+  const q = questionsList[currentQuizIdx];
   const allBtns = document.querySelectorAll('.quiz-opt-btn');
 
   if (selectedIdx === q.correct) {
@@ -2158,7 +2181,8 @@ function handleQuizSelect(selectedIdx, clickedBtn) {
 
 function nextQuizQuestion() {
   currentQuizIdx++;
-  if (currentQuizIdx < QUIZ_QUESTIONS.length) {
+  const totalQ = (activeQuizQuestions && activeQuizQuestions.length > 0) ? activeQuizQuestions.length : 6;
+  if (currentQuizIdx < totalQ) {
     renderQuizQuestion();
   } else {
     finishQuiz();
@@ -2170,12 +2194,17 @@ function finishQuiz() {
   document.getElementById('quiz-result-view').classList.remove('hidden');
 
   const displayName = candidateName.startsWith("Đồng chí") ? candidateName : ("Đồng chí: " + candidateName);
+  const totalQ = (activeQuizQuestions && activeQuizQuestions.length > 0) ? activeQuizQuestions.length : 6;
   document.getElementById('cert-name-display').textContent = displayName;
-  document.getElementById('cert-score-display').textContent = `${quizScore} / ${QUIZ_QUESTIONS.length} Điểm`;
+  document.getElementById('cert-score-display').textContent = `${quizScore} / ${totalQ} Điểm`;
 
+  // Xếp loại danh hiệu chuẩn theo thang điểm 6
   let rankTitle = "Chiến Sĩ Lịch Sử Xuất Sắc (Huy Hiệu Vàng)";
-  if (quizScore < 4) rankTitle = "Đoàn Viên Tích Cực (Huy Hiệu Đồng)";
-  else if (quizScore <= 5) rankTitle = "Chiến Sĩ Tri Thức Giỏi (Huy Hiệu Bạc)";
+  if (quizScore <= 2) {
+    rankTitle = "Đoàn Viên Tích Cực (Huy Hiệu Đồng)";
+  } else if (quizScore <= 4) {
+    rankTitle = "Chiến Sĩ Tri Thức Giỏi (Huy Hiệu Bạc)";
+  }
 
   document.getElementById('cert-rank-display').textContent = rankTitle;
   document.getElementById('cert-date-display').textContent = `Cấp ngày: ${new Date().toLocaleDateString('vi-VN')}`;

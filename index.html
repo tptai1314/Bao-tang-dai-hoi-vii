@@ -256,7 +256,7 @@
       <div id="quiz-intro-view">
         <div class="quiz-badge-icon">🎖️</div>
         <h2>THỬ THÁCH TRI THỨC: ĐẠI HỘI VII CỦA ĐẢNG (1991)</h2>
-        <p>6 câu hỏi trắc nghiệm tinh hoa đúc kết toàn diện về thời gian, nhân sự, Cương lĩnh 1991, Chiến lược kinh tế và đột phá đối ngoại!</p>
+        <p>Hệ thống tự động chọn ngẫu nhiên 6 câu hỏi từ Ngân hàng đề thi để thử thách kiến thức. Trả lời đúng nhận Giấy chứng nhận và ghi tên vào Bảng Vàng!</p>
         
         <div class="quiz-intro-lb-preview">
           <div class="lb-header-small">
@@ -288,7 +288,7 @@
       <!-- Màn làm bài Quiz -->
       <div id="quiz-active-view" class="hidden">
         <div class="quiz-header">
-          <span id="quiz-progress">Câu 1/10</span>
+          <span id="quiz-progress">Câu 1/6</span>
           <span id="quiz-score-live">Điểm: 0</span>
         </div>
         <h3 id="quiz-question-text">Nội dung câu hỏi...</h3>
@@ -313,7 +313,7 @@
             <h2 class="cert-student-name" id="cert-name-display">Đồng chí: Khách tham quan</h2>
             <p class="cert-sub">Đã hoàn thành xuất sắc chuyến tham quan bảo tàng ảo</p>
             <h3 class="cert-title">ĐẠI HỘI VII CỦA ĐẢNG (1991)</h3>
-            <div class="cert-score" id="cert-score-display">10 / 10 Điểm</div>
+            <div class="cert-score" id="cert-score-display">6 / 6 Điểm</div>
             <div class="cert-rank" id="cert-rank-display">Chiến Sĩ Lịch Sử Xuất Sắc</div>
             <p class="cert-date" id="cert-date-display"></p>
           </div>
@@ -403,6 +403,7 @@
   <!-- Scripts & Firebase Realtime Database -->
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+  <script src="questions/quiz-questions.js"></script>
   <script src="js/firebase-config.js"></script>
   <script src="js/leaderboard.js"></script>
   <script src="js/data.js"></script>
