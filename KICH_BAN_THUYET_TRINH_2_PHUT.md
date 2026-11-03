@@ -54,3 +54,4 @@
    - Khi nói đến *Quả cầu đối ngoại*, bấm phím **`3`**.
    - Khi nói đến *Quiz & Bảng Vàng*, bấm phím **`5`** để nhảy ngay vào phòng Quiz, chỉ tay vào **Màn hình 3D trên tường**.
 2. **Âm giọng**: Nhấn mạnh vào các từ khóa lịch sử: *"Đổi mới, ổn định và phát triển"*, *"Cương lĩnh 1991"*, *"Tư tưởng Hồ Chí Minh"*, *"Ngân hàng 24 câu hỏi ngẫu nhiên"*, *"Bảng Vàng Danh Dự"*.
+
