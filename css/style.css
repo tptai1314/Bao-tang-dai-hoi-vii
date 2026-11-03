@@ -1217,15 +1217,16 @@ body, html {
 }
 
 .cert-time {
-  font-size: 15px;
-  font-weight: 700;
+  font-size: 16px;
+  font-weight: 800;
   color: #38bdf8;
-  background: rgba(56, 189, 248, 0.12);
-  border: 1px solid rgba(56, 189, 248, 0.3);
+  background: rgba(56, 189, 248, 0.18);
+  border: 1px solid rgba(56, 189, 248, 0.45);
   border-radius: 20px;
-  padding: 4px 14px;
+  padding: 6px 18px;
   display: inline-block;
-  margin: 6px auto 10px auto;
+  margin: 6px auto 12px auto;
+  box-shadow: 0 4px 12px rgba(56, 189, 248, 0.2);
 }
 
 .cert-rank {
