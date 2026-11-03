@@ -2200,16 +2200,13 @@ function finishQuiz() {
   document.getElementById('cert-name-display').textContent = displayName;
   document.getElementById('cert-score-display').textContent = `${quizScore} / ${totalQ} Điểm`;
 
-  // Tính và hiển thị thời gian hoàn thành
+  // Tính và hiển thị chính xác số giây hoàn thành
   const timeSpent = Math.max(1, Math.round((Date.now() - (window.quizStartTime || Date.now())) / 1000));
-  const timeFormatted = (timeSpent >= 60)
-    ? `${Math.floor(timeSpent / 60)} phút ${timeSpent % 60} giây`
-    : `${timeSpent} giây`;
-  window.lastQuizTimeSpentStr = `${timeSpent}s`;
+  window.lastQuizTimeSpentStr = `${timeSpent} giây`;
 
   const timeDisplay = document.getElementById('cert-time-display');
   if (timeDisplay) {
-    timeDisplay.textContent = `⏱️ Thời gian hoàn thành: ${timeFormatted}`;
+    timeDisplay.textContent = `⚡ Hoàn thành trong: ${timeSpent} giây`;
   }
 
   // Xếp loại danh hiệu chuẩn theo thang điểm 6
@@ -2304,7 +2301,7 @@ function downloadCertificatePNG() {
   if (quizScore <= 2) rankTitle = "Đoàn Viên Tích Cực (Huy Hiệu Đồng)";
   else if (quizScore <= 4) rankTitle = "Chiến Sĩ Tri Thức Giỏi (Huy Hiệu Bạc)";
   const totalQ = (activeQuizQuestions && activeQuizQuestions.length > 0) ? activeQuizQuestions.length : 6;
-  const timeSuffix = window.lastQuizTimeSpentStr ? ` (Thời gian: ${window.lastQuizTimeSpentStr})` : '';
+  const timeSuffix = window.lastQuizTimeSpentStr ? ` (Hoàn thành trong: ${window.lastQuizTimeSpentStr})` : '';
   ctx.fillText(`Kết quả: ${quizScore}/${totalQ} Điểm${timeSuffix}  —  Danh hiệu: ${rankTitle}`, 600, 590);
 
   const dateStr = `Hà Nội, ngày ${new Date().getDate()} tháng ${new Date().getMonth() + 1} năm ${new Date().getFullYear()}`;
