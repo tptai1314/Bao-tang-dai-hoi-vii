@@ -45,3 +45,4 @@ Mỗi câu hỏi trong tệp `quiz-questions.js` có cấu trúc như sau:
    * Nếu đáp án đúng là **C** ➔ điền `2`
    * Nếu đáp án đúng là **D** ➔ điền `3`
 2. **Thêm câu hỏi mới**: Bạn chỉ cần copy nguyên khối `{ id: ..., question: ..., ... }` dán xuống dưới cùng của danh sách (nhớ thêm dấu phẩy `,` ngăn cách giữa các câu). Hệ thống sẽ tự động gộp vào ngân hàng bốc đề ngẫu nhiên!
+

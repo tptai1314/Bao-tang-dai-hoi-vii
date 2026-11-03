@@ -2,6 +2,23 @@
 > **Chủ đề: "Đổi mới, Ổn định và Phát triển" (Hà Nội, 24 – 27/6/1991)**  
 > *Ứng dụng bảo tàng ảo 3D tương tác WebGL/Three.js chạy trực tiếp trên trình duyệt Web, tối ưu cho cả máy tính và thiết bị di động.*
 
+
+> 🌐 **Trải nghiệm trực tiếp:** [https://tptai1314.github.io/Bao-tang-dai-hoi-vii/](https://tptai1314.github.io/Bao-tang-dai-hoi-vii/)  
+> 📁 **Tệp kịch bản riêng:** Xem chi tiết tại [`KICH_BAN_THUYET_TRINH_2_PHUT.md`](KICH_BAN_THUYET_TRINH_2_PHUT.md)
+
+---
+
+## 🎤 KỊCH BẢN THUYẾT TRÌNH GIỚI THIỆU SẢN PHẨM (1 – 2 PHÚT)
+
+* **00:00 – 00:20 (Mở đầu):** *"Kính thưa Thầy/Cô và các bạn! Nhằm đổi mới phương pháp học tập Lịch sử Đảng, nhóm chúng em đã xây dựng **Bảo tàng ảo 3D Đại hội VII của Đảng (1991)** với chủ đề **'Đổi mới, Ổn định và Phát triển'**. Sản phẩm chạy mượt mà trực tiếp trên nền tảng Web Three.js mà không cần cài đặt bất kỳ ứng dụng nào."*
+* **00:20 – 01:05 (Không gian 4 phòng 3D):** *"Bảo tàng được thiết kế theo hành lang tuyến tính 4 phòng chuyên đề:
+  * **Phòng 1:** Tái hiện bối cảnh giông bão cuối thập niên 80, siêu lạm phát 774% và tủ tem phiếu gạo bao cấp.
+  * **Phòng 2:** Không gian trọng thể tại Ba Đình, bầu TBT Đỗ Mười và thông qua Cương lĩnh 1991 — lần đầu tiên đưa Tư tưởng Hồ Chí Minh vào nền tảng tư tưởng.
+  * **Phòng 3:** Bục Quả cầu 3D với khẩu hiệu mở cửa: 'Việt Nam muốn là bạn với tất cả các nước', mở đường gia nhập ASEAN và bình thường hóa quan hệ Việt - Mỹ năm 1995.
+  * **Phòng 4:** Tổng kết thành tựu: kiềm chế lạm phát, GDP tăng trưởng 8,2%/năm."*
+* **01:05 – 01:40 (Quiz & Bảng Vàng):** *"Đặc biệt, tại **Phòng Quiz Thử Thách**: Hệ thống có sẵn **Ngân hàng 24 câu hỏi lịch sử chính thống**, mỗi lượt thi tự động **bốc ngẫu nhiên 6 câu hỏi** để người học thi nhiều lần không bị trùng đề. Khi hoàn thành sẽ được cấp **Giấy chứng nhận (tải ảnh PNG)** và vinh danh trực tiếp lên **Màn hình Bảng Vàng 3D** thi đua sôi nổi."*
+* **01:40 – 01:55 (Kết luận):** *"Kết hợp giữa tính chuẩn xác học thuật và công nghệ 3D trực quan, chúng em hy vọng sản phẩm sẽ mang đến một góc nhìn mới mẻ, hào hứng cho việc học lịch sử Đảng. Xin trân trọng cảm ơn Thầy/Cô!"*
+
 ---
 
 ## 🏛️ I. Cấu trúc Triển lãm: Hành lang Tuyến tính (4 Phòng Chuyên Đề + Quiz)
