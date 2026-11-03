@@ -706,7 +706,9 @@ function drawLeaderboardOnCanvas(data) {
 
   // 5. Hiển thị danh sách Top 7 người chơi
   const list = (data && data.length > 0) ? data.slice(0, 7) : [
-    { name: "Đang cập nhật danh sách...", score: 6, timeSpent: 30 }
+    { name: "Nhựt Anh", score: 6, timeSpent: 35 },
+    { name: "Kiến Quốc", score: 6, timeSpent: 40 },
+    { name: "Nhựt Tín", score: 5, timeSpent: 46 }
   ];
 
   let currentY = tableY + 100;
